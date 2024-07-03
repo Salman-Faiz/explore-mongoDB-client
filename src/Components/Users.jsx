@@ -16,9 +16,9 @@ const Users = () => {
         .then(data => {
             console.log(data)
             if(data.deletedCount>0){
-                alert('data delete successfully')
                 const remainingUsers = users.filter(user => user._id !== _id);
                 setUsers(remainingUsers);
+                alert('data delete successfully');
             }
         })
 
@@ -35,7 +35,8 @@ const Users = () => {
                     }} key={user._id}> <h5> user id:{user._id}</h5> <h3>{user.name}</h3>
                         <h4>{user.email}</h4>
                         <button onClick={()=>{handleDelete(user._id)} } style={{ marginBottom: '5px', color: 'red' }}>delete</button>
-                        <button style={{ color: 'blue' }}>update</button></div>)
+                        <Link to={`/update/${user._id}`}><button style={{ color: 'blue' }}>update</button></Link>
+                        </div>)
                 }
             </div>
         </div>

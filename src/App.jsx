@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import './App.css'
 
 function App() {
@@ -20,12 +21,22 @@ function App() {
     body: JSON.stringify(user)
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data =>{
+    console.log(data)
+
+    if(data.insertedId){
+      alert('data sent successfully')
+    }
+    form.reset();
+  })
+  
  }
 
   return (
     <>
       <h1>Simple CRUD operations</h1>
+
+     <Link to={'/users'}> <h3>see total user </h3></Link>
 
       <form onSubmit={handleSubmit} >
       <input type="text" name="name" placeholder='name' id="" /> <br />
